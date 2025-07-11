@@ -27,10 +27,12 @@ public class TestClass {
         Assert.assertTrue(driver.findElement(By.xpath("//a[text()='Shop1']")).isDisplayed(), "Element is not displayed");
     }
 
+
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) throws IOException {
         if (driver != null) {
             if (result.getStatus() == ITestResult.FAILURE) {
+                Allure.step("Fail screenshot", Status.FAILED);
                 File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 Allure.attachment("Fail-screenshot", new FileInputStream(src));
             }
