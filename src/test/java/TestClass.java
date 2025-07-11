@@ -21,10 +21,11 @@ public class TestClass {
     @Test
     public void test() {
         Allure.step("Go to page");
-        driver.get("https://practice.automationtesting.in");
-
-        Assert.assertEquals(driver.getTitle(), "Automation Practice Site", "Title does not match");
-        Assert.assertTrue(driver.findElement(By.xpath("//a[text()='Shop1']")).isDisplayed(), "Element is not displayed");
+        driver.get("https://practicetestautomation.com/practice-test-login/");
+        driver.findElement(By.xpath("//input[@id=\"username\"]")).sendKeys("student");
+        driver.findElement(By.xpath("//input[@id=\"password\"]")).sendKeys("Password123");
+        driver.findElement(By.xpath("//button[@id=\"submit\"]")).click();
+        Assert.assertTrue(driver.findElement(By.xpath("//a[text()=\"Log out1\"]")).isDisplayed(), "Log out button is not displayed");
     }
 
 
